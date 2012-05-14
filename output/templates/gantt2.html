@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Gantt chart 2</title>
+    <link rel="stylesheet" href="scripts/gantt2.css" type="text/css" />
+  </head>
+  <body>
+    <table class="gantt" cellpadding="0" cellspacing="0">
+      <tr class="week">
+        <td class="info">Week:</td>
+        {% for week in weeks %}
+          <td class="week" style="width:{{week.width_px}}px">
+            {{week.num}}
+          </td>
+        {% endfor %}
+      </tr>
+      {% for id, item in schedule %}
+        <tr class="{{ loop.cycle('odd', 'even') }}">
+          <td class="info">
+            {{item.label}}
+          </td>
+          <td style="width:{{WIDTH}}px" class="item" colspan="{{numweeks}}">
+            <div class="item" style="
+              left: {{item.start_px}}px;
+              width: {{item.width_px}}px;
+              background-color: {{item.color}};
+              ">&nbsp;</div>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
+
+
+
+
