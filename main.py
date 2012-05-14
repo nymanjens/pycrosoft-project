@@ -49,8 +49,6 @@ if __name__=='__main__':
 	pl.ion()
 	output.plot_resources('MW', res_sch, avail_resources)
 	pl.figure(); output.plot_resources('PR', res_sch, avail_resources)
-	pl.ioff()
 	pl.figure(); output.plot_resources('FR', res_sch, avail_resources)
 	pl.ioff()
 	pl.figure(); output.plot_resources('G', res_sch, avail_resources)
-	pl.ioff()
