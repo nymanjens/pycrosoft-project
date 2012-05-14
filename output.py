@@ -1,9 +1,9 @@
 from __future__ import division
 import numpy as np
 import pylab as pl
+import datetime, cgi
 from jinja2 import Environment, FileSystemLoader
 from copy import copy
-import datetime
 from settings import *
 
 """ RESOURCE PLOT """
@@ -28,6 +28,9 @@ def plot_resources(resource_ID, res_sch, avail_resources=None):
 """ GANTT CHART """
 def days(d):
     return datetime.timedelta(days = d)
+
+def escape_xml(s):
+    return cgi.escape(s).encode('ascii', 'xmlcharrefreplace')
 
 def save_to_gantt(res_sch):
     ### vars ###
@@ -62,8 +65,8 @@ def save_to_gantt(res_sch):
             <pDepend />
           </task>
         """ % {
-            'id': task['ID'],
-            'label': task['label'],
+            'id': escape_xml(task['ID']),
+            'label': escape_xml(task['label']),
             'start': sch_props['start_date'].strftime("%d/%m/%Y"),
             'end': sch_props['end_date'].strftime("%d/%m/%Y"),
             'color': '0000ff' if sch_props['slack'] else 'ff0000' if not task['ID']=='99' else '00ff00',

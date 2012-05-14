@@ -3,7 +3,7 @@ AVAIL_RESOURCES = {
 	'PR': 4,
 	'FR': 4,
 	'G': -1, # general category, the availability is further initialized as the sum of the available resources
-	'MW': 20 # volunteers
+	'MW': 10 # volunteers
 }
 
 USED_HEADERS = ['task_ID', 'task_name', 'precedences', 'duration']
