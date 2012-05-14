@@ -7,9 +7,9 @@ import datetime
 from settings import *
 
 """ RESOURCE PLOT """
-def plot_resources(resource_ID, res_sch):
+def plot_resources(resource_ID, res_sch, avail_resources=None):
     duration = res_sch.duration()
-    threshold = AVAIL_RESOURCES[resource_ID]
+    threshold = avail_resources[resource_ID] if avail_resources!=None else AVAIL_RESOURCES[resource_ID]
     res_usage = res_sch.resource_usage(resource_ID)[:duration]
     bar_border = [];
     for n, height in enumerate(res_usage):
