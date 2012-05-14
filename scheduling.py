@@ -158,11 +158,12 @@ class resourceScheduling:
 			general_resources_used = self.avail_resources['G'] - self.resources_left['G'][i]
 			while general_resources_used:
 				resources_left = [self.resources_left[resid][i] for resid in GENERAL_CATEGORY if self.resources_left[resid][i]]
-				smallest_val = min(resources_left)
-				smallest_ind = resources_left.index(smallest_val)
-				reduction = min(smallest_val*len(resources_left), general_resources_used)
+				largest = max(resources_left)
+				filtered_list = [resource for resource in resources_left if resource<largest-1e-4]
+				diff = largest-max(filtered_list) if filtered_list else largest
+				reduction = min(diff*(len(resources_left)-len(filtered_list)), general_resources_used)
 				for resid in GENERAL_CATEGORY:
-					self.resources_left[resid][i] -= reduction/float(len(resources_left)) if self.resources_left[resid][i] else 0
+					self.resources_left[resid][i] -= reduction/float(len(resources_left)-len(filtered_list)) if self.resources_left[resid][i]>largest-diff else 0
 				general_resources_used -= reduction
 		
 		### recalculate G (for analysis only) ###
