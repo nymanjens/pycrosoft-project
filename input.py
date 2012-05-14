@@ -18,7 +18,8 @@ def get_tasks():
 		try:
 			avail_resources[header] = float(amount.partition(']')[0])
 		except ValueError:
-			avail_resources[header] = -1
+			avail_resources[header] = 0
+	avail_resources['G'] = sum(avail_resources[res] for res in GENERAL_CATEGORY)
 	for line in input_file[1:]:
 		split_line = line.strip().split(';')
 		if any(split_line):

@@ -143,7 +143,7 @@ class resourceScheduling:
 			for accumresid in GENERAL_CATEGORY:
 				if accumresid != resid:
 					available_in_others += self.resources_left[accumresid][i:j]
-			if any(available_in_others < general_resources_used):
+			if any(available_in_others < general_resources_used - 1e-4):
 				diff = general_resources_used - available_in_others
 				diff = np.array([d if d > 0 else 0 for d in diff])
 				self.resources_left[resid][i:j] -= diff

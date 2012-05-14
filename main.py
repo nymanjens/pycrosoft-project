@@ -10,16 +10,23 @@ except: import pickle
 
 def main():
 	### get tasks ###
-	tasks, avail_resources = get_tasks()
+	tasks, _ = get_tasks()
+	avail_resources = None #so the settings-file is used
 	#print "Tasks:\n", pprint(tasks.items())
 	
-	### create chedule ###
-	res_sch = resourceScheduling(tasks, avail_resources)
-	schedule = res_sch.get_schedule_from_many_simulations(1e2)
+	for i in range(6):
+		try:
+			### create schedule ###
+			res_sch = resourceScheduling(tasks, avail_resources)
+			schedule = res_sch.get_schedule_from_many_simulations(1e2)
 	
-	### apply CC/BM ###
-	res_sch.CCBM_schedule_alap_and_calc_slack()
-	res_sch.CCBM_put_buffers()
+			### apply CC/BM ###
+			res_sch.CCBM_schedule_alap_and_calc_slack()
+			res_sch.CCBM_put_buffers()
+		except AssertionError:
+			print 'assertion-error, retrying'
+		else:
+			break
 	
 	### final step: divide general resources ###
 	res_sch.divide_general_resource()
@@ -44,3 +51,6 @@ if __name__=='__main__':
 	pl.figure(); output.plot_resources('PR', res_sch, avail_resources)
 	pl.ioff()
 	pl.figure(); output.plot_resources('FR', res_sch, avail_resources)
+	pl.ioff()
+	pl.figure(); output.plot_resources('G', res_sch, avail_resources)
+	pl.ioff()
