@@ -1,65 +1,71 @@
 task_ID;task_name;precedences;duration;G;FR;PR;MW
-A1;Locatie zoeken;;14;1.5;0;0;0
-A2;Datum vastleggen;A1;2;0.4;0;0;0
-A3;Budget opstellen;A1,FR8;7;1.5;0;0;0
-A4;Locaties bezoeken & evalueren;A2,A3;7;0.8;0;0;0
-A5;Internet- en elektriciteitsplan voorbereiden;A4;3;0.6;0;0;0
-A6;Anticiperen op logistieke problemen;A5;3;0.9;0;0;0
-A7;Contract locatie finaliseren;A6;2;1;0;0;0
-A9;Schema opstellen;A2,A7,A10;5;1.6;0;0;0
-A10;Budget finaliseren;A7,A6,A3;7;2.5;0;0;0
-A11;PR-campagne;A18,A10;20;0;0;0.8;0.8
-A12;Logistiek finaliseren;A6,A10;5;1.2;0;0;0
-A13a;Participants list opstellen;A11,A18;2;1;0;0;0
-A13b;Reisschema participants opstellen;A9,A13a;7;1;0;0;0
-A13c;Survival guide participants opstellen;A9,A13b;4;1;0;0;0
-A14;GA-sessies invullen;A9,A13a,A13b;4;2;0;0;0
-A15;Shiftenlijst opstellen;A14;5;2.5;0;0;0
-A16;Draaiboek opstellen;A1,A2,A3,A4,A5,A6,A7,A9,A10,A11,A12,A13a,A13b,A13c,A14,A15;10;2;0;0;0
-A18;Website maken;A2;14;1.5;0;0;0
-FR1;FR-strategie bepalen;;8;0;1.5;0;0
-FR2;Kiezen FR-respponsibles;FR1;8;0;0.4;0;0
-FR3;FR-booklet opstellen;FR1,FR2;14;0;2;0;2
-FR4a;Company list opstellen en verdelen;FR2;7;0;2;0;0
-FR4b;Verzenden FR-booklet;FR3,FR4a;3;0;0.9;0;0
-FR5;Contact ex-partners;FR2,FR4a,A18;5;0;1.2;0;0
-FR6;Eerste contact bedrijven;FR3,FR4a,FR4b,A18;30;0;1.2;0;5.5
-FR8;Follow-up eerste contacten;FR6,FR5;12;0;1.2;0;5.5
-FR9;Meetings bedrijven;FR5,FR6,FR8;10;0;0.8;0;0
-FR10;Contracten bedrijven;FR9;5;0;0.6;0;0
-FR14;Facturen bedrijven;FR10;5;0;0.6;0;0
-J1;Begroting jobfair;A10;2;0;1;0;0
-J1b;Locatie zoeken;A7,J1;10;0;0.9;0;0
-J2;Locatie evalueren en contract opstellen;J1b;3;0;0.8;0;0
-J3;PR-strategie opstellen;J2,A11;6;0;2;0;0
-J4;PR-campagne uitvoeren;J3;14;0;0;0.8;2
-J5;Bedrijvengids;FR10,J14;14;0;0;0.6;0
-J6;Schema opstellen;FR10;3;0;1;0;0
-J7;Media contacteren;J3;4;0;0;0.3;0
-J8;Shiftenlijst opstellen;J15,J16,J2,FR10,J11,J14;2;0;0.8;0;0
-J9;Participants jobfair;J4,A13a;1;0;0.5;0;0
-J10;Nametags en badges;J4,A13a,J14;1;0;2;0;0
-J11;Grondplan;J2,FR10,J15,J16;3;1;0;0;0
-J12;Welkomstpaketten samenstellen;J5,J6,J11,J10;1;2;0;0;0
-J13;Materialen voor bedrijven;J2;3;0.6;0;0;0
-J14;Bedrijfsinformatie opvragen;FR10;10;0;0.1;0;0
-J15;Catering;J2;4;0.6;0;0;0
-J16;Closing cocktail;J2;2;0.6;0;0;0
-J17;Banner;J2,FR10;7;0;0;0.6;0
-F1;Begroting per activiteit;A10;1;0;0;2;0
-F2;Planning maken;F1,A9;1;0;0;1;0
-F3;Locaties bepalen;F2,A7;5;0;0;0.1;0
-F4;Thema kiezen;F1;1;0;0;0.5;0
-F5;DJ zoeken;F4,F2;7;0;0;0.2;0
-F6;Security;F3;1;0;0;0.3;0
-F7;Drank bestellen;F3;1;0;0;0.1;0
-F8;Eten bestellen;F3;1;0;0;0.1;0
-F9;Inkopen doen;F5;1;0;0;0.5;0
-F10;Gadgets ophalen;F4;1;0;0;0.3;0
-F11;Drankkaarten maken;F7;1;0;0;0.5;0
-F12;Licht en geluid;F5;1;0;0;0.5;0
-F13;Affiches maken;F5;1;0;0;1;0
-F14;Shiftenlijst opstellen;F3;1;0;0;1;0
-F15;Website aanvullen;F10,F13;1;0;0;0.3;0
-F16;Cantus;F2;1;0;0;0.5;0
-F17;International evening;F2;1;0;0;0.5;0
+A;*Logistiek;;;;;;
+A1;: Locatie zoeken;;14;1.5;0;0;0
+A2;: Datum vastleggen;A1;2;0.4;0;0;0
+A3;: Budget opstellen;A1,FR8;7;1.5;0;0;0
+A4;: Locaties bezoeken & evalueren;A2,A3;7;0.8;0;0;0
+A5;: Internet- en elektriciteitsplan voorbereiden;A4;3;0.6;0;0;0
+A6;: Anticiperen op logistieke problemen;A5;3;0.9;0;0;0
+A7;: Contract locatie finaliseren;A6;2;1;0;0;0
+A9;: Schema opstellen;A2,A7,A10;5;1.6;0;0;0
+A10;: Budget finaliseren;A7,A6,A3;7;2.5;0;0;0
+A11;: PR-campagne;A18,A10;20;0;0;0.8;0.8
+A12;: Logistiek finaliseren;A6,A10;5;1.2;0;0;0
+A13;: Uitstap;;;;;;
+A13a;:: Participants list opstellen;A11,A18;2;1;0;0;0
+A13b;:: Reisschema participants opstellen;A9,A13a;7;1;0;0;0
+A13c;:: Survival guide participants opstellen;A9,A13b;4;1;0;0;0
+A14;: GA-sessies invullen;A9,A13a,A13b;4;2;0;0;0
+A15;: Shiftenlijst opstellen;A14;5;2.5;0;0;0
+A16;: Draaiboek opstellen;A1,A2,A3,A4,A5,A6,A7,A9,A10,A11,A12,A13a,A13b,A13c,A14,A15;10;2;0;0;0
+A18;: Website maken;A2;14;1.5;0;0;0
+FR;*FR;;;;;;
+FR1;: FR-strategie bepalen;;8;0;1.5;0;0
+FR2;: Kiezen FR-respponsibles;FR1;8;0;0.4;0;0
+FR3;: FR-booklet opstellen;FR1,FR2;14;0;2;0;2
+FR4;: Sponsoring;;;;;;
+FR4a;:: Company list opstellen en verdelen;FR2;7;0;2;0;0
+FR4b;:: Verzenden FR-booklet;FR3,FR4a;3;0;0.9;0;0
+FR5;: Contact ex-partners;FR2,FR4a,A18;5;0;1.2;0;0
+FR6;: Eerste contact bedrijven;FR3,FR4a,FR4b,A18;30;0;1.2;0;5.5
+FR8;: Follow-up eerste contacten;FR6,FR5;12;0;1.2;0;5.5
+FR9;: Meetings bedrijven;FR5,FR6,FR8;10;0;0.8;0;0
+FR10;: Contracten bedrijven;FR9;5;0;0.6;0;0
+FR14;: Facturen bedrijven;FR10;5;0;0.6;0;0
+J;*Jobfair;;;;;;
+J1;: Begroting jobfair;A10;2;0;1;0;0
+J1b;: Locatie zoeken;A7,J1;10;0;0.9;0;0
+J2;: Locatie evalueren en contract opstellen;J1b;3;0;0.8;0;0
+J3;: PR-strategie opstellen;J2,A11;6;0;2;0;0
+J4;: PR-campagne uitvoeren;J3;14;0;0;0.8;2
+J5;: Bedrijvengids;FR10,J14;14;0;0;0.6;0
+J6;: Schema opstellen;FR10;3;0;1;0;0
+J7;: Media contacteren;J3;4;0;0;0.3;0
+J8;: Shiftenlijst opstellen;J15,J16,J2,FR10,J11,J14;2;0;0.8;0;0
+J9;: Participants jobfair;J4,A13a;1;0;0.5;0;0
+J10;: Nametags en badges;J4,A13a,J14;1;0;2;0;0
+J11;: Grondplan;J2,FR10,J15,J16;3;1;0;0;0
+J12;: Welkomstpaketten samenstellen;J5,J6,J11,J10;1;2;0;0;0
+J13;: Materialen voor bedrijven;J2;3;0.6;0;0;0
+J14;: Bedrijfsinformatie opvragen;FR10;10;0;0.1;0;0
+J15;: Catering;J2;4;0.6;0;0;0
+J16;: Closing cocktail;J2;2;0.6;0;0;0
+J17;: Banner;J2,FR10;7;0;0;0.6;0
+F;*Fuif;;;;;;
+F1;: Begroting per activiteit;A10;1;0;0;2;0
+F2;: Planning maken;F1,A9;1;0;0;1;0
+F3;: Locaties bepalen;F2,A7;5;0;0;0.1;0
+F4;: Thema kiezen;F1;1;0;0;0.5;0
+F5;: DJ zoeken;F4,F2;7;0;0;0.2;0
+F6;: Security;F3;1;0;0;0.3;0
+F7;: Drank bestellen;F3;1;0;0;0.1;0
+F8;: Eten bestellen;F3;1;0;0;0.1;0
+F9;: Inkopen doen;F5;1;0;0;0.5;0
+F10;: Gadgets ophalen;F4;1;0;0;0.3;0
+F11;: Drankkaarten maken;F7;1;0;0;0.5;0
+F12;: Licht en geluid;F5;1;0;0;0.5;0
+F13;: Affiches maken;F5;1;0;0;1;0
+F14;: Shiftenlijst opstellen;F3;1;0;0;1;0
+F15;: Website aanvullen;F10,F13;1;0;0;0.3;0
+F16;: Cantus;F2;1;0;0;0.5;0
+F17;: International evening;F2;1;0;0;0.5;0

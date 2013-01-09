@@ -3,6 +3,7 @@ import numpy as np
 import pylab as pl
 from pprint import pprint
 from scheduling import resourceScheduling
+import settings
 from input import get_tasks
 import output
 try: import cPickle as pickle
@@ -39,16 +40,12 @@ def main():
 	pickle.dump([res_sch, avail_resources], open('result.pkl','w'))
 
 if __name__=='__main__':
-	main()
+	main() # skip this to only show output
 	### output ###
 	res_sch, avail_resources = pickle.load(open('result.pkl'))
 	print 'project duration:', res_sch.duration()
 	output.save_to_gantt(res_sch)
 	output.save_to_gantt2(res_sch)
 	# plots
-	pl.ion()
-	output.plot_resources('MW', res_sch, avail_resources)
-	pl.figure(); output.plot_resources('PR', res_sch, avail_resources)
-	pl.figure(); output.plot_resources('FR', res_sch, avail_resources)
-	pl.ioff()
-	pl.figure(); output.plot_resources('G', res_sch, avail_resources)
+	for r in settings.AVAIL_RESOURCES:
+		output.save_resource_plot(r, res_sch, avail_resources)

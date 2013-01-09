@@ -1,9 +1,10 @@
 * {
     margin: 0;
     padding: 0;
+    font-size: 10px;
 }
 body {
-    margin: 30px;
+    margin: 5px;
 }
 
 table.gantt {
@@ -29,6 +30,7 @@ table.gantt tr.week td {
 table.gantt td.info {
     padding-right: 10px;
     padding-left: 10px;
+    border-width: 0 !important;
 }
 table.gantt td.item {
     border-style: dashed;
@@ -41,6 +43,10 @@ table.gantt div.item {
     position: relative;
     float: left;
 }
-
-
+table.gantt td.duration {
+    border-style: dashed;
+    border-width: 0;
+    border-left-width: 1px;
+    text-align: center;
+}
 

@@ -7,7 +7,7 @@ from copy import copy
 from settings import *
 
 """ RESOURCE PLOT """
-def plot_resources(resource_ID, res_sch, avail_resources=None):
+def plot_resources(resource_ID, res_sch, avail_resources=None, show=True):
     duration = res_sch.duration()
     threshold = avail_resources[resource_ID] if avail_resources!=None else AVAIL_RESOURCES[resource_ID]
     res_usage = res_sch.resource_usage(resource_ID)[:duration]
@@ -23,7 +23,13 @@ def plot_resources(resource_ID, res_sch, avail_resources=None):
     pl.xlim([0, duration])
     pl.xlabel('Day number')
     pl.ylabel('%s usage' % resource_ID)
-    pl.show()
+    if show:
+        pl.show()
+
+def save_resource_plot(resource_ID, res_sch, avail_resources=None):
+    pl.clf()
+    plot_resources(resource_ID, res_sch, avail_resources, show=False)
+    pl.savefig('output/resource_usage/{}.png'.format(resource_ID))
 
 """ GANTT CHART """
 def days(d):
@@ -39,8 +45,12 @@ def save_to_gantt(res_sch):
     total_duration = res_sch.duration()
     
     ### get start and end dates ###
-    end_date = datetime.date(2013, 4, 13)
-    start_date = end_date - days(total_duration)
+    if START_DATE == None:
+        end_date = END_DATE
+        start_date = end_date - days(total_duration)
+    elif END_DATE == None:
+        start_date = START_DATE
+        end_date = start_date + days(total_duration)
     schedule = copy(schedule)
     for sch_props, task in zip(schedule.values(), tasks.values()):
         sch_props['start_date'] = start_date + days(sch_props['start'])
@@ -76,9 +86,6 @@ def save_to_gantt(res_sch):
 
 
 """ GANTT CHART 2 """
-### settings ###
-WIDTH = 1000 #px
-
 def px(x):
     return int(round(WIDTH * x))
 
@@ -95,13 +102,14 @@ def save_to_gantt2(res_sch):
         sch_props['end_px'] = sch_props['start_px'] + sch_props['width_px']
         sch_props['color'] = 'blue' if sch_props['slack'] else 'red' if not task['ID']=='99' else '#00FF00'
         sch_props['label'] = task['label']
+        sch_props['duration'] = int(task['duration'])
     ### get weeks ###
     weeks = []
-    for n in range(int(np.ceil(total_duration/7))):
+    for n in range(int(np.ceil(total_duration/DAYS_IN_WEEK))):
         week = {
             'num': n + 1,
-            'start_px': px(7*n / total_duration),
-            'end_px': px(min(1, 7*(n+1) / total_duration)),
+            'start_px': px(DAYS_IN_WEEK*n / total_duration),
+            'end_px': px(min(1, DAYS_IN_WEEK*(n+1) / total_duration)),
         }
         week['width_px'] = week['end_px'] - week['start_px'] - 1
         weeks.append(week)
@@ -111,6 +119,7 @@ def save_to_gantt2(res_sch):
     template = env.get_template('gantt2.html')
     html = template.render(
         WIDTH = WIDTH,
+        INFO_WIDTH = INFO_WIDTH,
         schedule = schedule.items(),
         weeks = weeks,
         numweeks = len(weeks),

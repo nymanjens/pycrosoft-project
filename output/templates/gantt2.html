@@ -7,10 +7,17 @@
   <body>
     <table class="gantt" cellpadding="0" cellspacing="0">
       <tr class="week">
-        <td class="info">Week:</td>
+        <td class="info">
+          <div style="width:{{INFO_WIDTH}}px">
+            Week:
+          </div>
+        </td>
+        <td>&nbsp;</td>
         {% for week in weeks %}
-          <td class="week" style="width:{{week.width_px}}px">
-            {{week.num}}
+          <td class="week">
+            <div style="width:{{week.width_px}}px">
+              {{week.num}}
+            </div>
           </td>
         {% endfor %}
       </tr>
@@ -18,6 +25,9 @@
         <tr class="{{ loop.cycle('odd', 'even') }}">
           <td class="info">
             {{item.label}}
+          </td>
+          <td class="duration">
+            {% if item.duration %}{{item.duration}}{% else %}&nbsp;{% endif %}
           </td>
           <td style="width:{{WIDTH}}px" class="item" colspan="{{numweeks}}">
             <div class="item" style="

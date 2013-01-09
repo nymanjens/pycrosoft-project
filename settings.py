@@ -1,4 +1,6 @@
-# defines the resource availability
+import datetime
+
+""" defines the resource availability """
 AVAIL_RESOURCES = {
 	'PR': 4,
 	'FR': 4,
@@ -8,12 +10,21 @@ AVAIL_RESOURCES = {
 
 USED_HEADERS = ['task_ID', 'task_name', 'precedences', 'duration']
 
-# defines which resources can use general category
+""" defines which resources can use general category """
 GENERAL_CATEGORY = ['PR', 'FR']
 
-# init G avail as the sum of the available resources
+""" init G avail as the sum of the available resources """
 AVAIL_RESOURCES['G'] = sum(AVAIL_RESOURCES[res] for res in GENERAL_CATEGORY)
 
-# CCBM settings
+""" CCBM settings """
 PROJECT_BUFFER = 30 #percent of total duration
-FEEDING_BUFFER = 5 #days
+FEEDING_BUFFER = 5 # days
+
+""" time settings """
+START_DATE = datetime.date(2013, 1, 1)
+END_DATE = None # auto-generated
+DAYS_IN_WEEK = 5
+
+""" output settings (gantt2) """
+WIDTH = 1500 # px
+INFO_WIDTH = 230 # px

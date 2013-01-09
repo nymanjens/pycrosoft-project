@@ -2,6 +2,19 @@ from collections import OrderedDict
 from settings import *
 
 FILE = "input.csv"
+def parse_label(s):
+	if s.startswith('*'):
+		return '<b>{}</b>'.format(s.lstrip('* '))
+	if s.startswith('::'):
+		return '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>{}</i>'.format(s.lstrip(': '))
+	if s.startswith(':'):
+		return '&nbsp;&nbsp;&nbsp; {}'.format(s.lstrip(': '))
+	return s
+
+def parse_duration(d):
+	if d == '':
+		return 0
+	return int(d)
 
 def get_tasks():
 	f = open(FILE, 'U')
@@ -25,12 +38,12 @@ def get_tasks():
 		if any(split_line):
 			task = {
 				'ID':split_line[ind[0]],
-				'label': split_line[ind[1]],
+				'label': parse_label(split_line[ind[1]]),
 				'precedences':[precedence for precedence in split_line[ind[2]].split(',')] if split_line[ind[2]]!='' else [],
-				'duration':int(split_line[ind[3]]),
+				'duration': parse_duration(split_line[ind[3]]),
 				'resources':{}}
 			for i in resource_ind:
-				if float(split_line[i]):
+				if len(split_line) > i and split_line[i] != '' and float(split_line[i]):
 					task['resources'][headers[i].partition('[')[0]] = float(split_line[i])
 			tasks[split_line[ind[0]]] = task
 	# input check
